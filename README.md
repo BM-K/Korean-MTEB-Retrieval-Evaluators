@@ -70,19 +70,6 @@ Higher values indicate better retrieval quality.
 - **Avg. NDCG**: Average of NDCG@1, @3, @5, and @10 across all benchmark datasets.  
 - **NDCG@k**: Relevance quality of the top-*k* retrieved results.
 
-| Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
-|------|:---:|:---:|:---:|:---:|:---:|:---:|
-| telepix/PIXIE-Rune-Preview | 0.5B | 0.6905 | 0.6461 | 0.6859 | 0.7063 | 0.7238 |
-| telepix/PIXIE-Splade-Preview | 0.1B | 0.6677 | 0.6238 | 0.6628 | 0.6831 | 0.7009 |
-|  |  |  |  |  |  |  |
-| nlpai-lab/KURE-v1 | 0.5B | 0.6751 | 0.6277 | 0.6725 | 0.6907 | 0.7095 |
-| Snowflake/snowflake-arctic-embed-l-v2.0 | 0.5B | 0.6592 | 0.6118 | 0.6542 | 0.6759 | 0.6949 |
-| BAAI/bge-m3 | 0.5B | 0.6573 | 0.6099 | 0.6533 | 0.6732 | 0.6930 |
-| Qwen/Qwen3-Embedding-0.6B | 0.6B | 0.6321 | 0.5894 | 0.6274 | 0.6455 | 0.6662 |
-| jinaai/jina-embeddings-v3 | 0.6B | 0.6293 | 0.5800 | 0.6254 | 0.6456 | 0.6665 |
-| Alibaba-NLP/gte-multilingual-base | 0.3B | 0.6111 | 0.5542 | 0.6089 | 0.6302 | 0.6511 |
-| openai/text-embedding-3-large | N/A | 0.6015 | 0.5466 | 0.5999 | 0.6187 | 0.6409 |
-
 Descriptions of the benchmark datasets used for evaluation are as follows:
 - **Ko-StrategyQA**  
   A Korean multi-hop open-domain question answering dataset designed for complex reasoning over multiple documents.
@@ -98,6 +85,27 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
   A long-document retrieval benchmark based on Korean Wikipedia and mC4 corpus.
 - **XPQARetrieval**  
   A real-world dataset constructed from user queries and relevant product documents in a Korean e-commerce platform.
+  
+### Dense Embedding
+| Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|
+| telepix/PIXIE-Rune-Preview | 0.5B | 0.6905 | 0.6461 | 0.6859 | 0.7063 | 0.7238 |
+|  |  |  |  |  |  |  |
+| nlpai-lab/KURE-v1 | 0.5B | 0.6751 | 0.6277 | 0.6725 | 0.6907 | 0.7095 |
+| Snowflake/snowflake-arctic-embed-l-v2.0 | 0.5B | 0.6592 | 0.6118 | 0.6542 | 0.6759 | 0.6949 |
+| BAAI/bge-m3 | 0.5B | 0.6573 | 0.6099 | 0.6533 | 0.6732 | 0.6930 |
+| Qwen/Qwen3-Embedding-0.6B | 0.6B | 0.6321 | 0.5894 | 0.6274 | 0.6455 | 0.6662 |
+| jinaai/jina-embeddings-v3 | 0.6B | 0.6293 | 0.5800 | 0.6254 | 0.6456 | 0.6665 |
+| Alibaba-NLP/gte-multilingual-base | 0.3B | 0.6111 | 0.5542 | 0.6089 | 0.6302 | 0.6511 |
+| openai/text-embedding-3-large | N/A | 0.6015 | 0.5466 | 0.5999 | 0.6187 | 0.6409 |
+
+### Sparse Embedding
+| Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|
+| telepix/PIXIE-Splade-Preview | Sparse(0.1B) | 0.6677 | 0.6238 | 0.6628 | 0.6831 | 0.7009 |
+|  |  |  |  |  |  |  |
+| [BM25](https://github.com/xhluca/bm25s) | Sparse | 0.4251 | 0.3798 | 0.4238 | 0.4400 | 0.4566 |
+| naver/splade-v3 | Sparse(0.1B) |  |  |  |  |  |
 
 ## License
 The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
