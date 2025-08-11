@@ -36,7 +36,7 @@ python evaluate_splade.py \
   --tasks Ko-StrategyQA AutoRAGRetrieval PublicHealthQA BelebeleRetrieval XPQARetrieval MultiLongDocRetrieval MIRACLRetrieval \
   --model telepix/PIXIE-Splade-Preview \
   --output_folder ./results_splade \
-  --save_predictions
+  --batch_size 32 \
 ```
 The script builds or loads an inverted index, retrieves top-k per query, and reports metrics and `search_time`. 
 ### Dense retrieval
@@ -45,6 +45,37 @@ python evaluate_dense.py \
   --tasks Ko-StrategyQA AutoRAGRetrieval PublicHealthQA BelebeleRetrieval XPQARetrieval MultiLongDocRetrieval MIRACLRetrieval \
   --model telepix/PIXIE-Rune-Preview \
   --output_folder ./results_dense \
-  --save_predictions
+  --batch_size 32 \
 ```
 The script encodes the corpus once, then performs semantic search for each query and evaluates with BEIR.
+
+## How it works
+### SPLADE internals
+1. **Indexing**: `encode_document` returns sparse bag-of-token weights; for each document, only **non-zero token ids** are appended to the postings list. 
+2. **Retrieval**: a query is encoded with `encode_query`, its non-zero token ids intersect the index, and scores accumulate as a weighted inner product on shared tokens. 
+3. **Caching**: the inverted index is serialized to a pkl file under `./cache/…` and re-loaded on subsequent runs.
+### Dense internals
+1. **Corpus encoding**: all texts are encoded once to a tensor and kept in memory.
+2. **Query encoding**: optionally applies `prompt_name="query"` for specific backbones; otherwise encodes raw text.
+3. **Search**: ranks via `util.semantic_search` over the cached embeddings.
+
+## Output & Saved Predictions
+Each evaluator produces a per-subset `scores` dictionary with IR metrics and `search_time` in seconds. With `--save_predictions`, it writes `*_preds.json` containing the top-k doc ids and scores for each query to the configured output folder.
+
+## License
+The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
+
+## Citation
+```
+@software{Korean-MTEB-Retrieval-Evaluators,
+  title={Korean MTEB Retrieval Evaluators - SPLADE & Dense},
+  author={TelePIX AI Research Team},
+  year={2025},
+  url={https://github.com/BM-K/Korean-MTEB-Retrieval-Evaluators}
+}
+```
+
+## References
+[1] [telepix/PIXIE-Splade-Preview](https://huggingface.co/telepix/PIXIE-Splade-Preview)
+[2] [telepix/PIXIE-Rune-Preview](https://huggingface.co/telepix/PIXIE-Rune-Preview)
+[3] [nlpai-lab/KURE](https://github.com/nlpai-lab/KURE)
