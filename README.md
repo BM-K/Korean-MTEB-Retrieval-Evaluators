@@ -13,7 +13,7 @@ Both scripts plug into MTEB and BEIR’s `EvaluateRetrieval`, reporting standard
 
 ### SPLADE evaluator (evaluate_splade.py)
 - **Inverted index**: documents are encoded with `SparseEncoder.encode_document` and only non-zero token weights are stored per token id. 
-- **Query-time scoring**: queries are encoded with `encode_query`; scores are accumulated as Σ(q_token_weight × d_token_weight) over shared non-zero tokens. 
+- **Query-time scoring**: queries are encoded with `encode_query`; scores are accumulated as *Σ(q_token_weight × d_token_weight)* over shared non-zero tokens. 
 - **On-disk caching**: the token → postings map is cached to `./cache/<model>_<task>_<subset>_splade_index.pkl` and re-used between runs.
 
 ### Dense evaluator (evaluate_dense.py)
@@ -64,7 +64,7 @@ Each evaluator produces a per-subset `scores` dictionary with IR metrics and `se
 
 ## Leaderboard
 The table below presents the retrieval performance of several embedding models evaluated on a variety of Korean MTEB benchmarks. 
-We report Normalized Discounted Cumulative Gain (NDCG) scores, 
+We report **Normalized Discounted Cumulative Gain (NDCG)** scores, 
 which measure how well a ranked list of documents aligns with ground truth relevance. 
 Higher values indicate better retrieval quality.
 - **Avg. NDCG**: Average of NDCG@1, @3, @5, and @10 across all benchmark datasets.  
