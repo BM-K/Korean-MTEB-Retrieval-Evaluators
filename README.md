@@ -18,7 +18,7 @@ Both scripts plug into MTEB and BEIR’s `EvaluateRetrieval`, reporting standard
 
 ### Dense evaluator (evaluate_dense.py)
 - **Single-pass corpus encoding** with `SentenceTransformer`; keeps the tensor in memory.
-- **Query prompts(prefix) for specific models**: uses prompt_name="query" for certain embedding backbones (e.g., `telepix/PIXIE-Rune-Preview`, `Snowflake/snowflake-arctic-embed-l-v2.0`).
+- **Query prompts(prefix) for specific models**: uses `prompt_name="query"` for certain embedding backbones (e.g., `telepix/PIXIE-Rune-Preview`, `Snowflake/snowflake-arctic-embed-l-v2.0`).
 - **Ranking** via `util.semantic_search` over the encoded corpus.
 
 ## Installation
