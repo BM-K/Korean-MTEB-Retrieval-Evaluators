@@ -26,8 +26,6 @@ Both scripts plug into MTEB and BEIR’s `EvaluateRetrieval`, reporting standard
 # Python 3.10+ recommended
 pip install -U sentence-transformers mteb beir numpy
 ```
-> **Tip:**
-> If you keep large corpora, prefer running with a GPU for both SPLADE encoding and dense encoding.
 
 ## Quick Start
 ### SPLADE retrieval
@@ -48,6 +46,8 @@ python evaluate_dense.py \
   --batch_size 32 \
 ```
 The script encodes the corpus once, then performs semantic search for each query and evaluates with BEIR.
+> **Tip:**
+> If you keep large corpora, prefer running with a GPU for both SPLADE encoding and dense encoding.
 
 ## How it works
 ### SPLADE internals
