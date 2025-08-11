@@ -76,6 +76,6 @@ The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
 ```
 
 ## References
-[1] [telepix/PIXIE-Splade-Preview](https://huggingface.co/telepix/PIXIE-Splade-Preview)
-[2] [telepix/PIXIE-Rune-Preview](https://huggingface.co/telepix/PIXIE-Rune-Preview)
-[3] [nlpai-lab/KURE](https://github.com/nlpai-lab/KURE)
+[1] [telepix/PIXIE-Splade-Preview](https://huggingface.co/telepix/PIXIE-Splade-Preview) <br>
+[2] [telepix/PIXIE-Rune-Preview](https://huggingface.co/telepix/PIXIE-Rune-Preview) <br>
+[3] [nlpai-lab/KURE](https://github.com/nlpai-lab/KURE) <br>
