@@ -1,5 +1,5 @@
 # Korean-MTEB-Retrieval-Evaluators
-This repository provides two command-line evaluators for Korean (and multilingual) retrieval tasks on [MTEB]: <br>
+This repository provides two command-line evaluators for Korean retrieval tasks on [MTEB]: <br>
 - `evaluate_splade.py` — a sparse evaluator that builds an inverted index over SPLADE document vectors for fast lookup. 
 - `evaluate_dense.py` — a dense evaluator that encodes the corpus once with `SentenceTransformer` and runs batched semantic search.
   
