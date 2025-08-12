@@ -59,6 +59,7 @@ class SPLADESearch:
     def search(self, corpus: dict, queries: dict, top_k: int = 10, scores_function=None, **kwargs) -> dict:
         docs = []
         texts = []
+        top_k = 10
         for did, info in corpus.items():
             if isinstance(info, dict):
                 text = (info.get("title", "") + " " + info.get("text", info.get("content", ""))).strip()
@@ -70,28 +71,42 @@ class SPLADESearch:
         if not self._load_index():
             self._build_index(texts)
         
+        # Prepare query texts
         q_ids = list(queries.keys())
         q_texts = [queries[qid] for qid in q_ids]
-         
-        warmup = self.model.encode_query('warmup').to_dense().float().cpu().numpy()
+        _ = self.model.encode_query('warmup')
+
         results = {}
         search_start = time()
-        for qi, qt in enumerate(q_texts):
-            vec = self.model.encode_query(qt).to_dense().float().cpu().numpy()
+
+        # Encode all queries in a batch
+        with torch.no_grad():
+            q_embs = self.model.encode_query(q_texts, batch_size=self.batch_size).to("cpu")
+        q_embs = q_embs.to_dense().numpy()
+        
+        # Iterate through the batch of query embeddings to get search results
+        for i, vec in enumerate(q_embs):
+            q_id = q_ids[i]
+            # Get non-zero dimensions (tokens) for the current query
             nz = np.nonzero(vec)[0]
-            scores: Dict[int, float] = defaultdict(float)    
+            scores: Dict[int, float] = defaultdict(float)
+            
+            # Calculate dot product scores using the inverted index
             for token_id in nz:
-                qw = float(vec[token_id])
+                qw = float(vec[token_id]) # Query weight for the token
+                # Retrieve documents containing this token
                 for doc_idx, dw in self.inverted_index.get(token_id, []):
                     scores[doc_idx] += qw * dw
-            top = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:10]
-            results[q_ids[qi]] = {docs[doc_idx]: score for doc_idx, score in top}
+            
+            # Get the top-k documents
+            top = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_k]
+            results[q_id] = {docs[doc_idx]: score for doc_idx, score in top}
         
         search_end = time()
         search_time = search_end - search_start
-        logger.info(f"[SPLADEMTEB] Search time only:     {search_time}s")
-        
-        return results, search_end - search_start
+        logger.info(f"[SPLADEMTEB] Search time only:     {search_time:.2f}s")
+
+        return results, search_time
 
 
 class SPLADEMTEB(MTEB):
