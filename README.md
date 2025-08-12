@@ -105,7 +105,7 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 | telepix/PIXIE-Splade-Preview | Sparse(0.1B) | 0.6677 | 0.6238 | 0.6628 | 0.6831 | 0.7009 |
 |  |  |  |  |  |  |  |
 | [BM25](https://github.com/xhluca/bm25s) | Sparse | 0.4251 | 0.3798 | 0.4238 | 0.4400 | 0.4566 |
-| naver/splade-v3 | Sparse(0.1B) |  |  |  |  |  |
+| naver/splade-v3 | Sparse(0.1B) | 0.0587 | 0.0468 | 0.0568 | 0.0620 | 0.0690 |
 
 ## License
 The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
