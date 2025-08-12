@@ -60,18 +60,40 @@ class DenseSearch:
             show_progress_bar=True
         )
         
-        results = {}
-        start = time()
-        for qid, qtext in queries.items():
-            if self.model_name == 'telepix/PIXIE-Rune-Preview':
-                q_emb = self.model.encode(qtext, convert_to_tensor=True, prompt_name="query")
-            elif self.model_name == 'Snowflake/snowflake-arctic-embed-l-v2.0':
-                q_emb = self.model.encode(qtext, convert_to_tensor=True, prompt_name="query")
+        qids = list(queries.keys())
+        qtexts = []
+        for qid in qids:
+            qv = queries[qid]
+            if isinstance(qv, dict):
+                qtexts.append(qv.get("text", qv.get("content", "")).strip())
             else:
-                q_emb = self.model.encode(qtext, convert_to_tensor=True)
+                qtexts.append(str(qv).strip())
 
-            hits = util.semantic_search(q_emb, self.doc_embeddings, top_k=10)[0]
-            results[qid] = {self.doc_ids[hit['corpus_id']]: float(hit['score']) for hit in hits}
+        logger.info("Encoding queries in batches...")
+        start = time()
+        if self.model_name in {"telepix/PIXIE-Rune-Preview", "Snowflake/snowflake-arctic-embed-l-v2.0"}:
+            query_embs = self.model.encode(
+                qtexts,
+                convert_to_tensor=True,
+                batch_size=self.bch,
+                show_progress_bar=True,
+                prompt_name="query",
+            )
+        else:
+            query_embs = self.model.encode(
+                qtexts,
+                convert_to_tensor=True,
+                batch_size=self.bch,
+                show_progress_bar=True,
+            )
+
+        all_hits = util.semantic_search(query_embs, self.doc_embeddings, top_k=top_k)
+
+        results: Dict[str, Dict[str, float]] = {}
+        for i, hits in enumerate(all_hits):
+            qid = qids[i]
+            results[qid] = {self.doc_ids[hit["corpus_id"]]: float(hit["score"]) for hit in hits}
+    
         end = time()
 
         return results, end-start
@@ -134,7 +156,7 @@ def main():
     parser.add_argument("--model", type=str, default="telepix/PIXIE-Rune-Preview")
     parser.add_argument("--output_folder", type=str, default="./results_dense")
     parser.add_argument("--verbosity", type=int, default=2)
-    parser.add_argument("--batch_size", type=int, default=8)
+    parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--save_predictions", action="store_true")
     args = parser.parse_args()
 
