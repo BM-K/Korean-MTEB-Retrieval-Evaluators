@@ -85,6 +85,9 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
   A long-document retrieval benchmark based on Korean Wikipedia and mC4 corpus.
 - **XPQARetrieval**  
   A real-world dataset constructed from user queries and relevant product documents in a Korean e-commerce platform.
+
+> **Warning** <br>
+> ToDo
   
 ### Dense Embedding
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
