@@ -36,7 +36,6 @@ python evaluate_splade.py \
   --output_folder ./results_splade \
   --batch_size 32 \
 ```
-The script builds or loads an inverted index, retrieves top-k per query, and reports metrics and `search_time`. 
 ### Dense retrieval
 ```
 python evaluate_dense.py \
@@ -45,7 +44,6 @@ python evaluate_dense.py \
   --output_folder ./results_dense \
   --batch_size 32 \
 ```
-The script encodes the corpus once, then performs semantic search for each query and evaluates with BEIR.
 > **Tip:**
 > If you keep large corpora, prefer running with a GPU for both SPLADE encoding and dense encoding.
 
