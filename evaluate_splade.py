@@ -28,7 +28,7 @@ class SPLADESearch:
         self.batch_size = batch_size
 
     def _build_index(self, texts: List[str]):
-        logger.info("Building inverted index from scratch...")
+        logger.info("Building inverted index from scratch...*^*...")
         with torch.no_grad():
             doc_emb = self.model.encode_document(texts, batch_size=self.batch_size).to("cpu")
         doc_emb = doc_emb.to_dense().numpy()
