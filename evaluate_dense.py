@@ -24,12 +24,14 @@ class DenseSearch:
         doc_embeddings: Cached tensor of document embeddings
         doc_ids: Corresponding list of document IDs
     """
-    def __init__(self, model_name: str = "telepix/PIXIE-Rune-Preview", batch_size: int = 8):
-        self.model_name = model_name
-        self.model = SentenceTransformer(model_name)
+    def __init__(self, args):
+        self.model_name = args.model
+        self.model = SentenceTransformer(self.model_name)
         self.doc_embeddings = None
         self.doc_ids = None
-        self.bch = batch_size
+        self.bch = args.batch_size
+        self.query_prompt = args.query_prompt
+        self.passage_prompt = args.passage_prompt
 
     def search(self, 
         corpus: Dict[str, Dict],
@@ -53,12 +55,21 @@ class DenseSearch:
 
         logger.info("Encoding corpus...")
         # Encode all documents once
-        self.doc_embeddings = self.model.encode(
-            documents, 
-            convert_to_tensor=True, 
-            batch_size=self.bch, 
-            show_progress_bar=True
-        )
+        if self.passage_prompt:
+            self.doc_embeddings = self.model.encode(
+                documents, 
+                convert_to_tensor=True, 
+                batch_size=self.bch, 
+                show_progress_bar=True,
+                prompt_name="passage"
+            )
+        else:
+            self.doc_embeddings = self.model.encode(
+                documents,
+                convert_to_tensor=True,
+                batch_size=self.bch,
+                show_progress_bar=True,
+            )
         
         qids = list(queries.keys())
         qtexts = []
@@ -71,7 +82,7 @@ class DenseSearch:
 
         logger.info("Encoding queries in batches...")
         start = time()
-        if self.model_name in {"telepix/PIXIE-Rune-Preview", "Snowflake/snowflake-arctic-embed-l-v2.0"}:
+        if self.query_prompt:
             query_embs = self.model.encode(
                 qtexts,
                 convert_to_tensor=True,
@@ -93,7 +104,6 @@ class DenseSearch:
         for i, hits in enumerate(all_hits):
             qid = qids[i]
             results[qid] = {self.doc_ids[hit["corpus_id"]]: float(hit["score"]) for hit in hits}
-    
         end = time()
 
         return results, end-start
@@ -157,9 +167,12 @@ def main():
     parser.add_argument("--output_folder", type=str, default="./results_dense")
     parser.add_argument("--verbosity", type=int, default=2)
     parser.add_argument("--batch_size", type=int, default=32)
+    # prompt_name
+    parser.add_argument("--query_prompt", type=bool, default=False)
+    parser.add_argument("--passage_prompt", type=bool, default=False)
     parser.add_argument("--save_predictions", action="store_true")
     args = parser.parse_args()
-
+    
     if args.verbosity <= 1:
         logging.getLogger("mteb").setLevel(logging.WARNING)
     elif args.verbosity == 0:
@@ -167,7 +180,7 @@ def main():
     
     # Initialize evaluator and retrieval model
     evaluator = DenseMTEB(tasks=args.tasks, task_langs=args.task_langs)
-    model = DenseSearch(model_name=args.model, batch_size=args.batch_size)
+    model = DenseSearch(args)
     
     # Normalize model name for output path
     if '/' in args.model:
