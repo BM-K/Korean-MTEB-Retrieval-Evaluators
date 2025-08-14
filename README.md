@@ -17,8 +17,8 @@ Both scripts plug into MTEB and BEIR’s `EvaluateRetrieval`, reporting standard
 - **On-disk caching**: the token → postings map is cached to `./cache/<model>_<task>_<subset>_splade_index.pkl` and re-used between runs.
 
 ### Dense evaluator (evaluate_dense.py)
-- **Single-pass corpus encoding** with `SentenceTransformer`; keeps the tensor in memory.
-- **Query prompts(prefix) for specific models**: uses `prompt_name="query"` for certain embedding backbones (e.g., `telepix/PIXIE-Rune-Preview`, `Snowflake/snowflake-arctic-embed-l-v2.0`).
+- **Single-pass corpus encoding** with `SentenceTransformer`; keeps the tensor in memory. Optionally applies `passage_prompt=True` for specific backbones.
+- **Query prompts(prefix) for specific models**: uses `query_prompt=True` for certain embedding backbones (e.g., `telepix/PIXIE-Rune-Preview`, `Snowflake/snowflake-arctic-embed-l-v2.0`).
 - **Ranking** via `util.semantic_search` over the encoded corpus.
 
 ## Installation
@@ -55,8 +55,8 @@ The script encodes the corpus once, then performs semantic search for each query
 2. **Retrieval**: a query is encoded with `encode_query`, its non-zero token ids intersect the index, and scores accumulate as a weighted inner product on shared tokens. 
 3. **Caching**: the inverted index is serialized to a pkl file under `./cache/…` and re-loaded on subsequent runs.
 ### Dense internals
-1. **Corpus encoding**: all texts are encoded once to a tensor and kept in memory.
-2. **Query encoding**: optionally applies `prompt_name="query"` for specific backbones; otherwise encodes raw text.
+1. **Corpus encoding**: all texts are encoded once to a tensor and kept in memory. Optionally applies `passage_prompt=True` for specific backbones.
+2. **Query encoding**: optionally applies `query_prompt=True` for specific backbones; otherwise encodes raw text.
 3. **Search**: ranks via `util.semantic_search` over the cached embeddings.
 
 ## Output & Saved Predictions
