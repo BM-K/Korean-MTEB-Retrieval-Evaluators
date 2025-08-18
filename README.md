@@ -81,8 +81,6 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
   A dataset for retrieving relevant content from web and news articles in Korean.
 - **MultiLongDocRetrieval**  
   A long-document retrieval benchmark based on Korean Wikipedia and mC4 corpus.
-- **XPQARetrieval**  
-  A real-world dataset constructed from user queries and relevant product documents in a Korean e-commerce platform.
 
 > **Tip:**
 > While many benchmark datasets are available for evaluation, in this project we chose to use only those that contain clean positive documents for each query. Keep in mind that a benchmark dataset is just that—a benchmark. For real-world applications, it is best to construct an evaluation dataset tailored to your specific domain and evaluate embedding models, such as PIXIE, in that environment to determine the most suitable one.
@@ -90,6 +88,8 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 ### Dense Embedding
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
+| telepix/PIXIE-Spell-Preview-1.7B | 1.7B | 0.7567 | 0.7149 | 0.7541 | 0.7696 | 0.7882 |
+| telepix/PIXIE-Spell-Preview-0.6B | 0.6B | 0.7280 | 0.6804 | 0.7258 | 0.7448 | 0.7612 |
 | telepix/PIXIE-Rune-Preview | 0.5B | 0.7383 | 0.6936 | 0.7356 | 0.7545 | 0.7698 |
 |  |  |  |  |  |  |  |
 | nlpai-lab/KURE-v1 | 0.5B | 0.7312 | 0.6826 | 0.7303 | 0.7478 | 0.7642 |
