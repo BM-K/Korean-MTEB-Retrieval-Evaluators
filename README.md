@@ -90,23 +90,23 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 ### Dense Embedding
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
-| telepix/PIXIE-Rune-Preview | 0.5B | 0.6905 | 0.6461 | 0.6859 | 0.7063 | 0.7238 |
+| telepix/PIXIE-Rune-Preview | 0.5B | 0.7383 | 0.6936 | 0.7356 | 0.7545 | 0.7698 |
 |  |  |  |  |  |  |  |
-| nlpai-lab/KURE-v1 | 0.5B | 0.6751 | 0.6277 | 0.6725 | 0.6907 | 0.7095 |
-| Snowflake/snowflake-arctic-embed-l-v2.0 | 0.5B | 0.6592 | 0.6118 | 0.6542 | 0.6759 | 0.6949 |
-| BAAI/bge-m3 | 0.5B | 0.6573 | 0.6099 | 0.6533 | 0.6732 | 0.6930 |
-| Qwen/Qwen3-Embedding-0.6B | 0.6B | 0.6321 | 0.5894 | 0.6274 | 0.6455 | 0.6662 |
-| jinaai/jina-embeddings-v3 | 0.6B | 0.6293 | 0.5800 | 0.6254 | 0.6456 | 0.6665 |
-| Alibaba-NLP/gte-multilingual-base | 0.3B | 0.6111 | 0.5542 | 0.6089 | 0.6302 | 0.6511 |
-| openai/text-embedding-3-large | N/A | 0.6015 | 0.5466 | 0.5999 | 0.6187 | 0.6409 |
+| nlpai-lab/KURE-v1 | 0.5B | 0.7312 | 0.6826 | 0.7303 | 0.7478 | 0.7642 |
+| BAAI/bge-m3 | 0.5B | 0.7126 | 0.6613 | 0.7107 | 0.7301 | 0.7483 |
+| Snowflake/snowflake-arctic-embed-l-v2.0 | 0.5B | 0.7050 | 0.6570 | 0.7015 | 0.7226 | 0.7390 |
+| Qwen/Qwen3-Embedding-0.6B | 0.6B | 0.6872 | 0.6423 | 0.6833 | 0.7017 | 0.7215 |
+| jinaai/jina-embeddings-v3 | 0.5B | 0.6731 | 0.6224 | 0.6715 | 0.6899 | 0.7088 |
+| Alibaba-NLP/gte-multilingual-base | 0.3B | 0.6679 | 0.6068 | 0.6673 | 0.6892 | 0.7084 |
+| openai/text-embedding-3-large | N/A | 0.6465 | 0.5895 | 0.6467 | 0.6646 | 0.6853 |
 
 ### Sparse Embedding
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
-| telepix/PIXIE-Splade-Preview | 0.1B | 0.6677 | 0.6238 | 0.6628 | 0.6831 | 0.7009 |
+| telepix/PIXIE-Splade-Preview | 0.1B | 0.7253 | 0.6799 | 0.7217 | 0.7416 | 0.7579 |
 |  |  |  |  |  |  |  |
-| [BM25](https://github.com/xhluca/bm25s) | N/A | 0.4251 | 0.3798 | 0.4238 | 0.4400 | 0.4566 |
-| naver/splade-v3 | 0.1B | 0.0587 | 0.0468 | 0.0568 | 0.0620 | 0.0690 |
+| [BM25](https://github.com/xhluca/bm25s) | N/A | 0.4714 | 0.4194 | 0.4708 | 0.4886 | 0.5071 |
+| naver/splade-v3 | 0.1B | 0.0582 | 0.0462 | 0.0566 | 0.0612 | 0.0685 |
 
 ## License
 The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
