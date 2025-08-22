@@ -97,6 +97,7 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 | Snowflake/snowflake-arctic-embed-l-v2.0 | 0.5B | 0.7050 | 0.6570 | 0.7015 | 0.7226 | 0.7390 |
 | Qwen/Qwen3-Embedding-0.6B | 0.6B | 0.6872 | 0.6423 | 0.6833 | 0.7017 | 0.7215 |
 | jinaai/jina-embeddings-v3 | 0.5B | 0.6731 | 0.6224 | 0.6715 | 0.6899 | 0.7088 |
+| SamilPwC-AXNode-GenAI/PwC-Embedding_expr | 0.5B | 0.6709 | 0.6221 | 0.6694 | 0.6852 | 0.7069 | 
 | Alibaba-NLP/gte-multilingual-base | 0.3B | 0.6679 | 0.6068 | 0.6673 | 0.6892 | 0.7084 |
 | openai/text-embedding-3-large | N/A | 0.6465 | 0.5895 | 0.6467 | 0.6646 | 0.6853 |
 
