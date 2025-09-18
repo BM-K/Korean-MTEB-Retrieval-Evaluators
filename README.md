@@ -172,7 +172,7 @@ The Korean-MTEB-Retrieval-Evaluators is licensed under MIT License.
 ## Citation
 ```
 @software{Korean-MTEB-Retrieval-Evaluators,
-  title={Korean MTEB Retrieval Evaluators - SPLADE & Dense},
+  title={Korean MTEB Retrieval Evaluators - SPLADE, Dense Retrieval & Reranking},
   author={TelePIX AI Research Team and Bongmin Kim},
   year={2025},
   url={https://github.com/BM-K/Korean-MTEB-Retrieval-Evaluators}
