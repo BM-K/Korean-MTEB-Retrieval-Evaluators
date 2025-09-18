@@ -82,9 +82,9 @@ python evaluate_reranker.py \
 ```
 
 > **Tip:** <br>
-> For large corpora, GPU is strongly recommended for both SPLADE encoding and dense encoding. <br>
-> Qwen3-style rerankers are often length-hungry; increasing `--rerank_max_length` (e.g., 24576) can improve quality. <br>
-> `--candidate_k` controls the SPLADE shortlist size; higher values help recall but increase rerank cost (default 100).
+> 1. For large corpora, GPU is strongly recommended for both SPLADE encoding and dense encoding. <br>
+> 2. Qwen3-style rerankers are often length-hungry; increasing `--rerank_max_length` (e.g., 24576) can improve quality. <br>
+> 3. `--candidate_k` controls the SPLADE shortlist size; higher values help recall but increase rerank cost (default 100).
 
 ## How it works
 ### SPLADE internals
