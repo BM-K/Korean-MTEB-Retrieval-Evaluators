@@ -160,10 +160,10 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
 |  |  |  |  |  |  |  |
-| BAAI/bge-reranker-v2-m3 | 0.5B | 0. | 0. | 0. | 0. | 0. |
-| dragonkue/bge-reranker-v2-m3-ko | 0.5B | 0. | 0. | 0. | 0. | 0. |
-| Alibaba-NLP/gte-multilingual-reranker-base | 0.3B | 0. | 0. | 0. | 0. | 0. |
-| jinaai/jina-reranker-v2-base-multilingual | 0.3B | 0. | 0. | 0. | 0. | 0. |
+| BAAI/bge-reranker-v2-m3 | 0.5B | 0.7861 | 0.7448 | 0.7868 | 0.7998 | 0.8133 |
+| dragonkue/bge-reranker-v2-m3-ko | 0.5B | 0.7849 | 0.7505 | 0.7843 | 0.7959 | 0.8089 |
+| Alibaba-NLP/gte-multilingual-reranker-base | 0.3B | 0.7594 | 0.7067 | 0.7610 | 0.7778 | 0.7922 |
+| jinaai/jina-reranker-v2-base-multilingual | 0.3B | 0.6879 | 0.6410 | 0.6888 | 0.7027 | 0.7192 |
 > **Note:** SPLADE shortlist size fixed at **`candidate_k = 100`** for all experiments.
 
 ## License
