@@ -159,6 +159,7 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 ### Reranking
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
+| telepix/PIXIE-Spell-Reranker-Preview-0.6B | 0.6B | 0.7896 | 0.7494 | 0.7910 | 0.8022 | 0.8168 |
 |  |  |  |  |  |  |  |
 | BAAI/bge-reranker-v2-m3 | 0.5B | 0.7861 | 0.7448 | 0.7868 | 0.7998 | 0.8133 |
 | dragonkue/bge-reranker-v2-m3-ko | 0.5B | 0.7849 | 0.7505 | 0.7843 | 0.7959 | 0.8089 |
