@@ -1,3 +1,9 @@
+<p align="center">
+  <!-- Language switcher (for-the-badge style feels like real buttons) -->
+  <a href="./README.md"><img src="https://img.shields.io/badge/lang-English-black?style=for-the-badge" alt="English"></a>
+  <a href="./README.ko.md"><img src="https://img.shields.io/badge/언어-한국어-brightgreen?style=for-the-badge" alt="Korean"></a>
+</p>
+
 # Korean-MTEB-Retrieval-Evaluators
 This repository provides two command-line evaluators for Korean retrieval tasks on [MTEB](https://huggingface.co/spaces/mteb/leaderboard): <br>
 - `evaluate_splade.py` - a sparse evaluator that builds an inverted index over SPLADE document vectors for fast lookup. 
