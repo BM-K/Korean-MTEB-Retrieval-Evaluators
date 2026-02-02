@@ -138,6 +138,8 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 | telepix/PIXIE-Spell-Preview-0.6B | 0.6B | 0.7280 | 0.6804 | 0.7258 | 0.7448 | 0.7612 |
 | telepix/PIXIE-Rune-Preview | 0.5B | 0.7383 | 0.6936 | 0.7356 | 0.7545 | 0.7698 |
 |  |  |  |  |  |  |  |
+| nvidia/llama-embed-nemotron-8b |8B  | 0.7534 | 0.7088 | 0.7547 | 0.7689 | 0.7813 |
+| Qwen/Qwen3-Embedding-8B | 8B | 0.7507 | 0.7063 | 0.7494 | 0.7635 | 0.7839 |
 | nlpai-lab/KURE-v1 | 0.5B | 0.7312 | 0.6826 | 0.7303 | 0.7478 | 0.7642 |
 | dragonkue/BGE-m3-ko | 0.5B | 0.7206 | 0.6773 | 0.7188 | 0.7349 | 0.7514 |
 | BAAI/bge-m3 | 0.5B | 0.7126 | 0.6613 | 0.7107 | 0.7301 | 0.7483 |
