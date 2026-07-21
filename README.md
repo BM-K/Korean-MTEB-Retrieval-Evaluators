@@ -136,6 +136,8 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
 | telepix/PIXIE-Spell-Preview-1.7B | 1.7B | 0.7567 | 0.7149 | 0.7541 | 0.7696 | 0.7882 |
 | telepix/PIXIE-Spell-Preview-0.6B | 0.6B | 0.7280 | 0.6804 | 0.7258 | 0.7448 | 0.7612 |
+| telepix/PIXIE-Rune-v1.5 | 0.5B | 0.7345 | 0.6841 | 0.7382 | 0.7505 | 0.7651 |
+| telepix/PIXIE-Rune-v1.0 | 0.5B | 0.7291 | 0.6808 | 0.7308 | 0.7444 | 0.7603 |
 | telepix/PIXIE-Rune-Preview | 0.5B | 0.7383 | 0.6936 | 0.7356 | 0.7545 | 0.7698 |
 |  |  |  |  |  |  |  |
 | nvidia/llama-embed-nemotron-8b |8B  | 0.7534 | 0.7088 | 0.7547 | 0.7689 | 0.7813 |
