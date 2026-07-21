@@ -154,8 +154,11 @@ Descriptions of the benchmark datasets used for evaluation are as follows:
 ### Sparse Embedding
 | Model Name | # params | Avg. NDCG | NDCG@1 | NDCG@3 | NDCG@5 | NDCG@10 |
 |------|:---:|:---:|:---:|:---:|:---:|:---:|
+| telepix/PIXIE-Splade-v1.5 | 0.1B | 0.7343 | 0.6871 | 0.7322 | 0.7510 | 0.7670 |
+| telepix/PIXIE-Splade-v1.0 | 0.1B | 0.6732 | 0.6314 | 0.6717 | 0.6873 | 0.7025 |
 | telepix/PIXIE-Splade-Preview | 0.1B | 0.7253 | 0.6799 | 0.7217 | 0.7416 | 0.7579 |
 |  |  |  |  |  |  |  |
+| opensearch-project/opensearch-neural-sparse-encoding-multilingual-v1 | 0.2B | 0.4962 | 0.4358 | 0.4985 | 0.5148 | 0.5358 |
 | [BM25](https://github.com/xhluca/bm25s) | N/A | 0.4714 | 0.4194 | 0.4708 | 0.4886 | 0.5071 |
 | naver/splade-v3 | 0.1B | 0.0582 | 0.0462 | 0.0566 | 0.0612 | 0.0685 |
 
